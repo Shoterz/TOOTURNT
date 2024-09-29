@@ -7992,7 +7992,7 @@ body {
   li.grid__item.grid__item--featured-collections.small--one-half.medium-up--one-fifth:nth-child(3),
   li.grid__item.grid__item--featured-collections.small--one-half.medium-up--one-fifth:nth-child(4),
   li.grid__item.grid__item--featured-collections.small--one-half.medium-up--one-fifth:nth-child(5) {
-    padding-top: 10px !important; }
+  }
 
   li.grid__item.grid__item--featured-collections.small--one-half.medium-up--one-fifth:nth-child(5n) {
  }
