@@ -8669,8 +8669,9 @@ body {
 
 .search-box	{
 	display: inline-flex;
-	width: 25vw;
+	width: 40vw;
 }
+
 .top-nav-bar  {
   top: 0;
   position: sticky;
