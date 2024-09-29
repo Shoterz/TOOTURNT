@@ -84,7 +84,7 @@
 		  </header>
 		</div>
 		<div class="mobile-custom-header">
-		  <div id="weather">
+		  <!--<div id="weather">
 		    <div class="content-title">
 			  <a href="https://gallery.canary---yellow.com/">Gallery</a>
 			  <br>
@@ -97,9 +97,14 @@
 		    <a href="">
 			  <img src="">
 			</a>
-		  </figure>
+		  </figure>-->
 		  <div class="custom-buttons-wrapper">
-		    <a class="website-canary" href="" aria-describedby="a11y-external-message"></a>
+				  <button id='switch' onclick='myFunction()'>DARK MODE</button>
+		      <figure>
+			    <a href="../index.html">
+				  <img src="index files/too-turnt-banners-360.gif" alt="tooturnt logo">
+				</a> 
+			  </figure>
 		  </div>
 		</div>
 	  </div> 
@@ -569,3 +574,15 @@
 		</main>
 	  </div>
 	</body>
+	
+	<script>
+	function redirectMobileHandler() {
+  const width = Math.max(document.clientWidth || 0, window.innerWidth || 0);
+  if(width < 749) {
+    window.location = "store files/STORE SEARCH.html";
+  }
+}
+
+window.onload = redirectMobileHandler();
+window.onresize = () => redirectMobileHandler();
+</script>

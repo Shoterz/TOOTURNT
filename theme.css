@@ -7905,7 +7905,17 @@ body {
     margin-bottom: 15px; }
 
   .custom-buttons-wrapper {
-    margin-top: 25vw; }
+ }
+	
+  .custom-buttons-wrapper button {
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 1px;
+    height: 1.5em;
+    line-height: 1em;
+    outline: none;
+	float: right;
+	margin-right: 2px;}
 
   a.website-canary {
     position: initial !important; }
