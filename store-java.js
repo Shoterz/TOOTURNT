@@ -34,7 +34,7 @@ function myFunction() {
   element.classList.toggle("dark-mode");
 } **/
 
-fetch("https://mocki.io/v1/43b097a9-0d1a-4db8-a1ab-8a56fb60b117")
+fetch("https://shoterz.github.io/ShoterBeatz/users_items.json")
   .then(res => res.json())
   .then(data => {
     users = data.map(user => {
