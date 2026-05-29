@@ -17,7 +17,7 @@
 	</head>
 	<body style="background-color:black"; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; box-sizing:border-box;">
 	  <div id="SITE_CONTAINER">
-	    <div id="main_MF" class="main_MF">
+	    <div id="main_MF" class="main_MF" style="position: relative;">
 		  <div id="BACKGROUND_GROUP" class="backgroundGroup_owhmt">
 		    <div id="BACKGROUND_GROUP_TRANSITION_GROUP">
 			  <div id="pageBackground_owhmt" data-media-height-override-type data-media-position-override="false" class="pageBackground_owhmt BmZ5pC">
@@ -304,6 +304,23 @@
 		</div>
 	  </div>
 		
-		
+	<script>
+	  function centerContent() {
+	    var el = document.getElementById('main_MF');
+	    var winH = window.innerHeight;
+	    var winW = window.innerWidth;
+	    var elH = el.offsetHeight;
+	    var elW = el.offsetWidth;
+	
+	    var topPad = Math.max(0, (winH - elH) / 2);
+	    var leftPad = Math.max(0, (winW - elW) / 2);
+	
+	    el.style.marginTop = topPad + 'px';
+	    el.style.marginLeft = leftPad + 'px';
+	  }
+	
+	  window.addEventListener('load', centerContent);
+	  window.addEventListener('resize', centerContent);
+	</script>
 	</body>
 	</html>
