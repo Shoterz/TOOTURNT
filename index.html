@@ -306,18 +306,46 @@
 		
 	<script>
 	  function centerContent() {
-	    var el = document.getElementById('main_MF');
-	    var winH = window.innerHeight;
-	    var winW = window.innerWidth;
-	    var elH = el.offsetHeight;
-	    var elW = el.scrollWidth;  // use scrollWidth to get true full width
+		var el = document.getElementById('main_MF');
+		
+		// Reset first so measurements are accurate
+		el.style.marginTop = '0px';
+		el.style.marginLeft = '0px';
 	
-	    var topPad = Math.max(0, (winH - elH) / 2);
-	    var leftPad = Math.max(0, (winW - elW) / 2);
+		var winH = window.innerHeight;
+		var winW = window.innerWidth;
+		var elH = el.offsetHeight;
+		var elW = el.offsetWidth;
 	
-	    el.style.marginTop = topPad + 'px';
-	    el.style.marginLeft = leftPad + 'px';
-	    el.style.marginRight = leftPad + 'px'; // mirror the right side explicitly
+		// Get the true bounding box of all content inside
+		var rect = el.getBoundingClientRect();
+		var children = el.querySelectorAll('*');
+		var minX = Infinity, maxX = -Infinity;
+		var minY = Infinity, maxY = -Infinity;
+	
+		children.forEach(function(child) {
+		  var r = child.getBoundingClientRect();
+		  if (r.width > 0 && r.height > 0) {
+			if (r.left < minX) minX = r.left;
+			if (r.right > maxX) maxX = r.right;
+			if (r.top < minY) minY = r.top;
+			if (r.bottom > maxY) maxY = r.bottom;
+		  }
+		});
+	
+		var contentW = maxX - minX;
+		var contentH = maxY - minY;
+		var contentCenterX = minX + contentW / 2;
+		var contentCenterY = minY + contentH / 2;
+	
+		var targetCenterX = winW / 2;
+		var targetCenterY = winH / 2;
+	
+		var shiftX = targetCenterX - contentCenterX;
+		var shiftY = targetCenterY - contentCenterY;
+	
+		el.style.marginLeft = Math.max(0, shiftX) + 'px';
+		el.style.marginTop = Math.max(0, shiftY) + 'px';
 	  }
 	
 	  window.addEventListener('load', centerContent);
