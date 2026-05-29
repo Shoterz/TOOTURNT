@@ -15,7 +15,7 @@
 		<meta http-equiv='expires' content='0'> 
 		<meta http-equiv='pragma' content='no-cache'>
 	</head>
-	<body style="background-color:black; display:flex; justify-content:center; margin:0;">
+	<body style="background-color:black; margin:0; padding:0;">
 	  <div id="SITE_CONTAINER">
 	    <div id="main_MF" class="main_MF" style="position: relative;">
 		  <div id="BACKGROUND_GROUP" class="backgroundGroup_owhmt">
@@ -308,24 +308,33 @@
 	  function centerContent() {
 	    var el = document.getElementById('main_MF');
 	
+	    // Reset both axes before measuring
 	    el.style.marginTop = '0px';
+	    el.style.marginLeft = '0px';
 	
 	    var winH = window.innerHeight;
+	    var winW = window.innerWidth;
 	    var children = el.querySelectorAll('*');
+	    var minX = Infinity, maxX = -Infinity;
 	    var minY = Infinity, maxY = -Infinity;
 	
 	    children.forEach(function(child) {
 	      var r = child.getBoundingClientRect();
 	      if (r.width > 0 && r.height > 0) {
+	        if (r.left < minX) minX = r.left;
+	        if (r.right > maxX) maxX = r.right;
 	        if (r.top < minY) minY = r.top;
 	        if (r.bottom > maxY) maxY = r.bottom;
 	      }
 	    });
 	
-	    var contentH = maxY - minY;
-	    var contentCenterY = minY + contentH / 2;
+	    var contentCenterX = minX + (maxX - minX) / 2;
+	    var contentCenterY = minY + (maxY - minY) / 2;
+	
+	    var shiftX = (winW / 2) - contentCenterX;
 	    var shiftY = (winH / 2) - contentCenterY;
 	
+	    el.style.marginLeft = Math.max(0, shiftX) + 'px';
 	    el.style.marginTop = Math.max(0, shiftY) + 'px';
 	  }
 	
