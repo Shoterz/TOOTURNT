@@ -310,13 +310,14 @@
 	    var winH = window.innerHeight;
 	    var winW = window.innerWidth;
 	    var elH = el.offsetHeight;
-	    var elW = el.offsetWidth;
+	    var elW = el.scrollWidth;  // use scrollWidth to get true full width
 	
 	    var topPad = Math.max(0, (winH - elH) / 2);
 	    var leftPad = Math.max(0, (winW - elW) / 2);
 	
 	    el.style.marginTop = topPad + 'px';
 	    el.style.marginLeft = leftPad + 'px';
+	    el.style.marginRight = leftPad + 'px'; // mirror the right side explicitly
 	  }
 	
 	  window.addEventListener('load', centerContent);
